@@ -100,6 +100,34 @@ function Customizer() {
         GO BACK
         <AiOutlineArrowLeft size="1.3em" />
       </button>
+      <input type='checkbox' 
+      onChange={(e)=>state.decalDebugVisible = !snap.decalDebugVisible}
+      value={snap.decalDebugVisible}
+      checked={snap.decalDebugVisible}/>
+      <input
+        type='range'
+        onChange={ (e) => state.decalTransform.position.x = (e.target.value / 100.0)}
+        min={-100}
+        max={100}
+        step={1}
+        value={snap.decalTransform.position.x * 100.0}
+      ></input>
+      <input
+        type='range'
+        onChange={ (e) => state.decalTransform.position.y = (e.target.value / 100.0)}
+        min={-100}
+        max={100}
+        step={1}
+        value={snap.decalTransform.position.y * 100.0}
+      ></input>     
+     <input
+      type='range'
+      onChange={ (e) => state.decalTransform.position.z = (e.target.value / 100.0)}
+      min={-100}
+      max={100}
+      step={1}
+      value={snap.decalTransform.position.z * 100.0}
+    ></input>
     </div>
   )
 }
