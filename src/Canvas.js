@@ -5,6 +5,11 @@ import { easing } from 'maath'
 import { useSnapshot } from 'valtio'
 import { state } from './store'
 
+// TODOS:
+// 1: Cambiar de mesh (cabeza humana o camiseta) (poner un string en store llamado meshName y controlar desde ahi el mesh que se muestra)
+// 2: Subir logo desde la computadora
+// 3: Subir mesh desde la computadora
+
 export const App = ({ position = [0, 0, 2.5], fov = 25 }) => (
   <Canvas shadows camera={{ position, fov }} gl={{ preserveDrawingBuffer: true }} eventSource={document.getElementById('root')} eventPrefix="client">
     <ambientLight intensity={0.5} />
