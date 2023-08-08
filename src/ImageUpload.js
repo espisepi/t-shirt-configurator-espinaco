@@ -4,7 +4,7 @@ import { useSnapshot } from 'valtio';
 
 function ImageUpload() {
   const [image, setImage] = useState(null);
-  const snap = useSnapshot(state)
+  const snap = useSnapshot(state);
 
 
   const handleImageChange = (event) => {

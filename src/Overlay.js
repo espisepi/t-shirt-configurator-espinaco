@@ -4,6 +4,7 @@ import { AiFillCamera, AiOutlineArrowLeft, AiOutlineHighlight, AiOutlineShopping
 import { useSnapshot } from 'valtio'
 import { state } from './store'
 import ImageUpload from './ImageUpload'
+import ColorPicker from './ColorPicker'
 
 export function Overlay() {
   const snap = useSnapshot(state)
@@ -75,6 +76,9 @@ function Customizer() {
         {snap.colors.map((color) => (
           <div key={color} className={`circle`} style={{ background: color }} onClick={() => (state.color = color)}></div>
         ))}
+        
+        <ColorPicker />
+
       </div>
       {/* <div className="decals">
         <div className="decals--container">
