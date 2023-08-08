@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { AiFillCamera, AiOutlineArrowLeft, AiOutlineHighlight, AiOutlineShopping } from 'react-icons/ai'
 import { useSnapshot } from 'valtio'
 import { state } from './store'
+import ImageUpload from './ImageUpload'
 
 export function Overlay() {
   const snap = useSnapshot(state)
@@ -75,7 +76,7 @@ function Customizer() {
           <div key={color} className={`circle`} style={{ background: color }} onClick={() => (state.color = color)}></div>
         ))}
       </div>
-      <div className="decals">
+      {/* <div className="decals">
         <div className="decals--container">
           {snap.decals.map((decal) => (
             <div key={decal} className={`decal`} onClick={() => (state.decal = decal)}>
@@ -83,7 +84,7 @@ function Customizer() {
             </div>
           ))}
         </div>
-      </div>
+      </div> */}
       <button
         className="share"
         style={{ background: snap.color }}
@@ -164,6 +165,7 @@ function Customizer() {
           step={1}
           value={snap.decalTransform.scale.z * 100.0}
         ></input>
+        <ImageUpload />
     </div>
     </div>
   )
