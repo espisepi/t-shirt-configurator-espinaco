@@ -22,7 +22,9 @@ function ImageUpload() {
   return (
     <div>
       <input type="file" accept="image/*" onChange={handleImageChange} />
-      {/* {image && <img src={image} alt="Uploaded" style={{ marginTop: '20px', maxWidth: '100%' }} />} */}
+      {/* 
+      // El codigo de abajo sirve para mostrar la imagen que ha subido el usuario
+      {image && <img src={image} alt="Uploaded" style={{ marginTop: '20px', maxWidth: '100%' }} />} */}
     </div>
   );
 }
