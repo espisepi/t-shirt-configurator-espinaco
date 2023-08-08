@@ -50,10 +50,10 @@ function Shirt(props) {
       {
         snap.decalDebugVisible 
         ?
-        (      <Decal debug position={[snap.decalTransform.position.x, snap.decalTransform.position.y,snap.decalTransform.position.z]} rotation={[0, 0, 0]} scale={0.15} map={texture} map-anisotropy={16} />
+        (      <Decal debug position={[snap.decalTransform.position.x, snap.decalTransform.position.y,snap.decalTransform.position.z]} rotation={[snap.decalTransform.rotation.x, snap.decalTransform.rotation.y,snap.decalTransform.rotation.z]} scale={snap.decalTransform.scale.z} map={texture} map-anisotropy={16} />
         )
         :
-        (      <Decal position={[snap.decalTransform.position.x, snap.decalTransform.position.y,snap.decalTransform.position.z]} rotation={[0, 0, 0]} scale={0.15} map={texture} map-anisotropy={16} />
+        (      <Decal position={[snap.decalTransform.position.x, snap.decalTransform.position.y,snap.decalTransform.position.z]} rotation={[snap.decalTransform.rotation.x, snap.decalTransform.rotation.y,snap.decalTransform.rotation.z]} scale={snap.decalTransform.scale.z} map={texture} map-anisotropy={16} />
         )
       }
     </mesh>
