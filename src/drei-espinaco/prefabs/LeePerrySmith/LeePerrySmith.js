@@ -1,5 +1,7 @@
-import { useGLTF, useTexture } from '@react-three/drei'
+import { Decal, useGLTF, useTexture } from '@react-three/drei'
 import * as THREE from 'three'
+import { useSnapshot } from 'valtio'
+import { state } from '../../../store'
 
 const PATH_MAP_TEXTURE = 'models/LeePerrySmith/Map-COL.jpg'
 const PATH_MAP_SPECULAR_TEXTURE = 'models/LeePerrySmith/Map-SPEC.jpg'
@@ -27,6 +29,36 @@ export function LeePerrySmith({ children, ...props }) {
         })
       }
       {...props}
-      dispose={null}></mesh>
+      dispose={null}>
+      {{ ...children }}
+    </mesh>
+  )
+}
+
+export function LeePerrySmithDecal({ ...props }) {
+  const snap = useSnapshot(state)
+  const texture = useTexture(`${snap.decalName}`)
+
+  return (
+    <LeePerrySmith {...props}>
+      {snap.decalDebugVisible ? (
+        <Decal
+          debug
+          position={[snap.decalTransform.position.x, snap.decalTransform.position.y, snap.decalTransform.position.z]}
+          rotation={[snap.decalTransform.rotation.x, snap.decalTransform.rotation.y, snap.decalTransform.rotation.z]}
+          scale={snap.decalTransform.scale.z}
+          map={texture}
+          map-anisotropy={16}
+        />
+      ) : (
+        <Decal
+          position={[snap.decalTransform.position.x, snap.decalTransform.position.y, snap.decalTransform.position.z]}
+          rotation={[snap.decalTransform.rotation.x, snap.decalTransform.rotation.y, snap.decalTransform.rotation.z]}
+          scale={snap.decalTransform.scale.z}
+          map={texture}
+          map-anisotropy={16}
+        />
+      )}
+    </LeePerrySmith>
   )
 }

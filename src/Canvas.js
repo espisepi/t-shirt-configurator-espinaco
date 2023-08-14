@@ -4,7 +4,7 @@ import { useGLTF, useTexture, AccumulativeShadows, RandomizedLight, Decal, Envir
 import { easing } from 'maath'
 import { useSnapshot } from 'valtio'
 import { state } from './store'
-import { LeePerrySmith } from './drei-espinaco/prefabs/LeePerrySmith/LeePerrySmith'
+import { LeePerrySmith, LeePerrySmithDecal } from './drei-espinaco/prefabs/LeePerrySmith/LeePerrySmith'
 
 // TODOS:
 // 1: Cambiar de mesh (cabeza humana o camiseta) (poner un string en store llamado meshName y controlar desde ahi el mesh que se muestra)
@@ -18,8 +18,8 @@ export const App = ({ position = [0, 0, 2.5], fov = 25 }) => (
     {/* <CameraRig> */}
     <Backdrop />
     <Center>
-      <Shirt />
-      <LeePerrySmith />
+      {/* <Shirt /> */}
+      <LeePerrySmithDecal />
     </Center>
     <OrbitControls />
     {/* </CameraRig> */}
