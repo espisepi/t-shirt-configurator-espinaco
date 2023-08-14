@@ -165,9 +165,9 @@ button:hover {
 }
 
 .share {
-  bottom: 40px;
+  top: 100px;
   position: absolute;
-  right: 40px;
+  right: 30px;
 }
 
 .zoom {
@@ -311,4 +311,14 @@ button:hover {
     top: -10%;
     left: 0;
   }
+}
+
+.transform-position {
+  display: flex;
+  flex-flow: column;
+}
+
+.transform-rotation {
+  display: flex;
+  flex-flow: column;
 }

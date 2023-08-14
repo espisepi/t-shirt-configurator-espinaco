@@ -4,6 +4,7 @@ import { useGLTF, useTexture, AccumulativeShadows, RandomizedLight, Decal, Envir
 import { easing } from 'maath'
 import { useSnapshot } from 'valtio'
 import { state } from './store'
+import { LeePerrySmith } from './drei-espinaco/prefabs/LeePerrySmith/LeePerrySmith'
 
 // TODOS:
 // 1: Cambiar de mesh (cabeza humana o camiseta) (poner un string en store llamado meshName y controlar desde ahi el mesh que se muestra)
@@ -15,11 +16,12 @@ export const App = ({ position = [0, 0, 2.5], fov = 25 }) => (
     <ambientLight intensity={0.5} />
     <Environment files="https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/potsdamer_platz_1k.hdr" />
     {/* <CameraRig> */}
-      <Backdrop />
-      <Center>
-        <Shirt />
-      </Center>
-      <OrbitControls />
+    <Backdrop />
+    <Center>
+      <Shirt />
+      <LeePerrySmith />
+    </Center>
+    <OrbitControls />
     {/* </CameraRig> */}
   </Canvas>
 )
@@ -52,15 +54,24 @@ function Shirt(props) {
   useFrame((state, delta) => easing.dampC(materials.lambert1.color, snap.color, 0.25, delta))
   return (
     <mesh castShadow geometry={nodes.T_Shirt_male.geometry} material={materials.lambert1} material-roughness={1} {...props} dispose={null}>
-      {
-        snap.decalDebugVisible 
-        ?
-        (      <Decal debug position={[snap.decalTransform.position.x, snap.decalTransform.position.y,snap.decalTransform.position.z]} rotation={[snap.decalTransform.rotation.x, snap.decalTransform.rotation.y,snap.decalTransform.rotation.z]} scale={snap.decalTransform.scale.z} map={texture} map-anisotropy={16} />
-        )
-        :
-        (      <Decal position={[snap.decalTransform.position.x, snap.decalTransform.position.y,snap.decalTransform.position.z]} rotation={[snap.decalTransform.rotation.x, snap.decalTransform.rotation.y,snap.decalTransform.rotation.z]} scale={snap.decalTransform.scale.z} map={texture} map-anisotropy={16} />
-        )
-      }
+      {snap.decalDebugVisible ? (
+        <Decal
+          debug
+          position={[snap.decalTransform.position.x, snap.decalTransform.position.y, snap.decalTransform.position.z]}
+          rotation={[snap.decalTransform.rotation.x, snap.decalTransform.rotation.y, snap.decalTransform.rotation.z]}
+          scale={snap.decalTransform.scale.z}
+          map={texture}
+          map-anisotropy={16}
+        />
+      ) : (
+        <Decal
+          position={[snap.decalTransform.position.x, snap.decalTransform.position.y, snap.decalTransform.position.z]}
+          rotation={[snap.decalTransform.rotation.x, snap.decalTransform.rotation.y, snap.decalTransform.rotation.z]}
+          scale={snap.decalTransform.scale.z}
+          map={texture}
+          map-anisotropy={16}
+        />
+      )}
     </mesh>
   )
 }
