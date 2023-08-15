@@ -164,6 +164,13 @@ function Customizer() {
           value={snap.decalTransform.scale.z * 100.0}></input>
         <ImageUpload />
       </div>
+      <SelectCustomControlUI />
     </div>
   )
+}
+
+export function SelectCustomControlUI() {
+  const snap = useSnapshot(state)
+  // cambiar state.typeControl
+  return <div className="select-custom-control-ui">{/* TODO: input radio button con cada opcion de control */}</div>
 }

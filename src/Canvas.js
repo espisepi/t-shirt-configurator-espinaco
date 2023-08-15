@@ -3,7 +3,7 @@ import { Canvas, useFrame } from '@react-three/fiber'
 import { useGLTF, useTexture, AccumulativeShadows, RandomizedLight, Decal, Environment, Center, OrbitControls } from '@react-three/drei'
 import { easing } from 'maath'
 import { useSnapshot } from 'valtio'
-import { state } from './store'
+import { TypeControlEnum, state } from './store'
 import { LeePerrySmith, LeePerrySmithDecal } from './drei-espinaco/prefabs/LeePerrySmith/LeePerrySmith'
 
 // TODOS:
@@ -11,17 +11,38 @@ import { LeePerrySmith, LeePerrySmithDecal } from './drei-espinaco/prefabs/LeePe
 // 2: Subir logo desde la computadora
 // 3: Subir mesh desde la computadora
 
+// Lo importante es no poner string a pelo en el codigo
+
+export const CustomControls = ({ children, ...props }) => {
+  const snap = useSnapshot(state)
+  if (snap.typeControl === TypeControlEnum.ORBIT_CONTROLS) {
+    return (
+      <>
+        <OrbitControls />
+        {[children]}
+      </>
+    )
+  }
+  if (snap.typeControl === TypeControlEnum.CAMERA_RIG) {
+    return <CameraRig>{[children]}</CameraRig>
+  }
+  return null
+}
+
 export const App = ({ position = [0, 0, 2.5], fov = 25 }) => (
   <Canvas shadows camera={{ position, fov }} gl={{ preserveDrawingBuffer: true }} eventSource={document.getElementById('root')} eventPrefix="client">
     <ambientLight intensity={0.5} />
     <Environment files="https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/potsdamer_platz_1k.hdr" />
+
     {/* <CameraRig> */}
-    <Backdrop />
-    <Center>
-      {/* <Shirt /> */}
-      <LeePerrySmithDecal />
-    </Center>
-    <OrbitControls />
+    <CustomControls>
+      <Backdrop />
+      <Center>
+        {/* <Shirt /> */}
+        <LeePerrySmithDecal />
+      </Center>
+    </CustomControls>
+    {/* <OrbitControls /> */}
     {/* </CameraRig> */}
   </Canvas>
 )

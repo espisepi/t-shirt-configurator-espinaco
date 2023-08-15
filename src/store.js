@@ -1,10 +1,25 @@
 import { proxy } from 'valtio'
 
+// TODO: Usarlo para elegir el tipo de control que se muestra
+// TODO: Como UI utilizar un radio button con cada opción
+const TypeControlEnum = {
+  ORBIT_CONTROLS: 'ORBIT_CONTROLS',
+  CAMERA_RIG: 'CAMERA_RIG'
+}
+
+// TODO: Usarlo para elegir el modelo que se muestra
+// TODO: Como UI utilizar un radio button con cada opción
+const typeModelEnum = {
+  T_SHIRT: 'T_SHIRT',
+  LEERRYPEESMITH: 'LEEPERRYSMITH'
+}
+
 const state = proxy({
   intro: true,
   colors: ['#ccc', '#EFBD4E', '#80C670', '#726DE8', '#EF674E', '#353934'],
   decals: ['react.png', 'three2.png', 'pmndrs.png'],
   color: '#EFBD4E',
+  typeControl: TypeControlEnum.CAMERA_RIG,
   inputRangeAmplitude: 3, // t-shirt: 1, leeperrysmith: 3
   decalName: 'three2.png',
   decalDebugVisible: true,
@@ -27,4 +42,4 @@ const state = proxy({
   }
 })
 
-export { state }
+export { state, TypeControlEnum }
