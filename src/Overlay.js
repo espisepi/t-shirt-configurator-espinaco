@@ -165,12 +165,21 @@ function Customizer() {
         <ImageUpload />
       </div>
       <SelectCustomControlUI />
+      <SelectCustomModelUI />
     </div>
   )
 }
 
+// TODO
 export function SelectCustomControlUI() {
   const snap = useSnapshot(state)
   // cambiar state.typeControl
   return <div className="select-custom-control-ui">{/* TODO: input radio button con cada opcion de control */}</div>
+}
+
+// TODO
+export function SelectCustomModelUI() {
+  const snap = useSnapshot(state)
+  // cambiar state.typeModel
+  return <div className="select-custom-model-ui">{/* TODO: input radio button con cada opcion de modelo */}</div>
 }

@@ -3,7 +3,7 @@ import { Canvas, useFrame } from '@react-three/fiber'
 import { useGLTF, useTexture, AccumulativeShadows, RandomizedLight, Decal, Environment, Center, OrbitControls } from '@react-three/drei'
 import { easing } from 'maath'
 import { useSnapshot } from 'valtio'
-import { TypeControlEnum, state } from './store'
+import { TypeControlEnum, TypeModelEnum, state } from './store'
 import { LeePerrySmith, LeePerrySmithDecal } from './drei-espinaco/prefabs/LeePerrySmith/LeePerrySmith'
 
 // TODOS:
@@ -29,6 +29,17 @@ export const CustomControls = ({ children, ...props }) => {
   return null
 }
 
+export const CustomModel = () => {
+  const snap = useSnapshot(state)
+  if (snap.typeModel === TypeModelEnum.LEERRYPEESMITH) {
+    return <LeePerrySmithDecal />
+  }
+  if (snap.typeModel === TypeModelEnum.T_SHIRT) {
+    return <Shirt />
+  }
+  return null
+}
+
 export const App = ({ position = [0, 0, 2.5], fov = 25 }) => (
   <Canvas shadows camera={{ position, fov }} gl={{ preserveDrawingBuffer: true }} eventSource={document.getElementById('root')} eventPrefix="client">
     <ambientLight intensity={0.5} />
@@ -39,7 +50,8 @@ export const App = ({ position = [0, 0, 2.5], fov = 25 }) => (
       <Backdrop />
       <Center>
         {/* <Shirt /> */}
-        <LeePerrySmithDecal />
+        {/* <LeePerrySmithDecal /> */}
+        <CustomModel />
       </Center>
     </CustomControls>
     {/* <OrbitControls /> */}
