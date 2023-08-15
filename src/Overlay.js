@@ -6,6 +6,11 @@ import { state } from './store'
 import ImageUpload from './ImageUpload'
 import ColorPicker from './ColorPicker'
 
+// TODO: Boton debajo de CUSTOMIZE IT, dicho boton te permite añadir una escena visual al modelo
+// TODO: Escena visual 1: VideoPoints de fondo con musica
+// TODO: Escena visual 2: Vitrina expositoria con videoclip musical en texturas
+// TODO: Escena visual 3: Videoclip gata cattana modelo 3d sustituye al caballo
+
 export function Overlay() {
   const snap = useSnapshot(state)
   const transition = { type: 'spring', duration: 0.8 }
@@ -174,7 +179,9 @@ function Customizer() {
 export function SelectCustomControlUI() {
   const snap = useSnapshot(state)
   // cambiar state.typeControl
-  return <div className="select-custom-control-ui">{/* TODO: input radio button con cada opcion de control */}</div>
+  return (
+    <div className="select-custom-control-ui">{/* TODO: NEW: hacerlo con div igual que Customizer OLD: input radio button con cada opcion de control */}</div>
+  )
 }
 
 // TODO
