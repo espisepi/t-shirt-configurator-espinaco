@@ -19,7 +19,7 @@ const state = proxy({
   colors: ['#ccc', '#EFBD4E', '#80C670', '#726DE8', '#EF674E', '#353934'],
   decals: ['react.png', 'three2.png', 'pmndrs.png'],
   color: '#EFBD4E',
-  typeControl: TypeControlEnum.CAMERA_RIG,
+  typeControl: TypeControlEnum.ORBIT_CONTROLS,
   inputRangeAmplitude: 3, // t-shirt: 1, leeperrysmith: 3
   decalName: 'three2.png',
   decalDebugVisible: true,
